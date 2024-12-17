@@ -1,9 +1,7 @@
 import {Popup} from "./Popup.js";
 
 export class PopupWithConfirmation extends Popup {
-  /** Всплывашка с подтверждением, должна присутствовать form с селектором .popup__form
-   * @param popupSelector - селектор всплывашки
-   * @param handleSubmitDelete - хендлер по отправке формы */
+
   constructor(popupSelector, {handleSubmitDelete}) {
     super(popupSelector);
     this._handleSubmitDelete = handleSubmitDelete;
@@ -30,8 +28,6 @@ export class PopupWithConfirmation extends Popup {
     super.open();
   }
 
-  /** Очистка id карточки, элемента карточки
-   * @private */
   _clear() {
     this._idCard = '';
     this._cardElement = '';

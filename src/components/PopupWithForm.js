@@ -3,9 +3,6 @@ import {Popup} from './Popup.js'
 /** Открывает и закрывает всплывашку с формой */
 export class PopupWithForm extends Popup {
 
-  /** Конструктор всплывашки с формой
-   * @param popupSelector - селектор всплывашки
-   * @param handleSubmitForm - обработчик отправки формы */
   constructor(popupSelector, {handleSubmitForm}) {
     super(popupSelector);
     this._handleSubmitForm = handleSubmitForm;
@@ -14,9 +11,7 @@ export class PopupWithForm extends Popup {
     this._submitbutton = this._popup.querySelector('.popup__submit');
   }
 
-  /** Получает значения инпутов формы всплывашки
-   * @returns {*|{}} - объект с названиями инпутов и их значениями: {название: значение}
-   * @private */
+
   _getInputValues() {
     this._formValues = {};
     this._inputList.forEach((input) => {

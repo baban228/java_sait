@@ -2,13 +2,13 @@
   "name": "mesto",
   "description": "My project in RTU MIREA.",
   "version": "1.0.0",
-  "author": " <mishanykarl>",
+  "author": "Karsanov",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Mishanykarl/MireaFrontend_Sixth_pr-.git"
+    "url": "git+https://github.com/baban228/java_sait.git"
   },
-  "homepage": "https://github.com/Mishanykarl/MireaFrontend_Sixth_pr-",
+  "homepage": "https://github.com/baban228/java_sait",
   "scripts": {
     "build": "rimraf dist && webpack --mode production",
     "dev": "webpack serve",

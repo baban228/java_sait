@@ -1,5 +1,4 @@
 export class Api {
-  /** @param options - опции для работы с API (serverURL - url сервера, headers - заголовки в виде объекта) */
   constructor(options) {
     this._headers = options.headers; // Сохраняет заголовки для всех запросов в свойстве класса.
     this._serverURL = options.serverURL; // Сохраняет базовый URL сервера для формирования запросов.
@@ -13,10 +12,6 @@ export class Api {
     });
   }
 
-  /** Работа с данными пользователя */
-
-  /** Получает инфо о пользователе с сервера
-   * @returns {Promise<Response>} - объект с данными пользователя / текст ошибки */
   getUserInfo() {
     return fetch(`${this._serverURL}/users/me`, { // Выполняет GET-запрос к API для получения информации о текущем пользователе.
       headers: this._headers // Передает сохраненные заголовки запроса.
@@ -24,9 +19,6 @@ export class Api {
       .then((res) => this._handlePromiseReturn(res)); // Обрабатывает ответ через вспомогательный метод.
   }
 
-  /** Отправляет инфо о пользователе на сервер
-   * @param data - отправляемые данные
-   * @returns {Promise<Response>} - объект с обновленными даннями / текст ошибки */
   sendUserInfo(data) {
     return fetch(`${this._serverURL}/users/me`, { // Выполняет PATCH-запрос для обновления данных пользователя.
       method: 'PATCH', // Указывает метод HTTP для изменения данных.
@@ -39,9 +31,6 @@ export class Api {
       .then((res) => this._handlePromiseReturn(res)); // Обрабатывает результат через вспомогательный метод.
   }
 
-  /** Обновляет аватар пользователя на сервере
-   * @param avatar
-   * @returns {Promise<Response>} - объект с обновленными даннями / текст ошибки */
   updateAvatar(avatar) {
     return fetch(`${this._serverURL}/users/me/avatar`, { // Выполняет PATCH-запрос для обновления аватара.
       method: 'PATCH', // Указывает метод HTTP.
@@ -54,9 +43,6 @@ export class Api {
   }
 
   /** Работа с карточками */
-
-  /** Получает карточки с сервера
-   * @returns {Promise<Response>} - объект с карточками / текст ошибки */
   getCards() {
     return fetch(`${this._serverURL}/cards`, { // Выполняет GET-запрос для получения массива карточек.
       headers: this._headers // Передает заголовки запроса.
@@ -64,9 +50,6 @@ export class Api {
       .then((res) => this._handlePromiseReturn(res)); // Обрабатывает результат запроса.
   }
 
-  /** Отправляет данные о новой карточке на сервер
-   * @param data - объект с данными карточки
-   * @returns {Promise<Response>} - объект карточки / текст ошибки */
   sendCard(data) {
     return fetch(`${this._serverURL}/cards`, { // Выполняет POST-запрос для добавления новой карточки.
       method: 'POST', // Указывает метод HTTP.
@@ -79,9 +62,6 @@ export class Api {
       .then((res) => this._handlePromiseReturn(res)); // Обрабатывает результат запроса.
   }
 
-  /** Удаляет карточку с сервера
-   * @param cardID - ID карточки
-   * @returns {Promise<Response>} - объект карточки / текст ошибки */
   deleteCard(cardID) {
     return fetch(`${this._serverURL}/cards/${cardID}`, { // Выполняет DELETE-запрос для удаления карточки по ID.
       method: 'DELETE', // Указывает метод HTTP.
@@ -89,9 +69,6 @@ export class Api {
     });
   }
 
-  /** Ставит лайк
-   * @param cardID - ID карточки
-   * @returns {Promise<Response>} - объект карточки / текст ошибки */
   setLike(cardID) {
     return fetch(`${this._serverURL}/cards/${cardID}/likes`, { // Выполняет PUT-запрос для добавления лайка карточке.
       method: 'PUT', // Указывает метод HTTP.
@@ -100,9 +77,6 @@ export class Api {
       .then((res) => this._handlePromiseReturn(res)); // Обрабатывает результат запроса.
   }
 
-  /** Удаляет лайк
-   * @param cardID - ID карточки
-   * @returns {Promise<Response>} - объект карточки / текст ошибки */
   deleteLike(cardID) {
     return fetch(`${this._serverURL}/cards/${cardID}/likes`, { // Выполняет DELETE-запрос для удаления лайка карточки.
       method: 'DELETE', // Указывает метод HTTP.
